@@ -19,21 +19,21 @@ namespace PomodoroKata.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Crear un pomodoro")]
-    public partial class CrearUnPomodoroFeature
+    [NUnit.Framework.DescriptionAttribute("Interrumpir pomodoro")]
+    public partial class InterrumpirPomodoroFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "CrearPomodoro.feature"
+#line 1 "InterrumpirPomodoro.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Crear un pomodoro", "Para poder gestionar los pomodoros\r\ncomo usuario\r\nquiero poder crear un nuevo pom" +
-                    "odoro", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Interrumpir pomodoro", "Para gestionar las interrupciones durante un pomodoro\r\ncomo usuario\r\nquiero poder" +
+                    " interrumpir un pomodoro", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -66,35 +66,37 @@ namespace PomodoroKata.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Crear un nuevo pomodoro sin establecer su duración")]
-        public virtual void CrearUnNuevoPomodoroSinEstablecerSuDuracion()
+        [NUnit.Framework.DescriptionAttribute("No se puede interrumpir un pomodoro no iniciado")]
+        public virtual void NoSePuedeInterrumpirUnPomodoroNoIniciado()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Crear un nuevo pomodoro sin establecer su duración", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No se puede interrumpir un pomodoro no iniciado", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
-  testRunner.When("Creo un nuevo pomodoro sin especificar su duración");
+ testRunner.Given("Un pomodoro no iniciado");
 #line 8
-  testRunner.Then("la duración del pomodoro es de 25 minutos");
+ testRunner.When("lo interrumpo");
 #line 9
-  testRunner.And("el pomodoro está parado");
+ testRunner.Then("el número de interrupciones es 0");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Crear un nuevo pomodoro definiendo su duración")]
-        public virtual void CrearUnNuevoPomodoroDefiniendoSuDuracion()
+        [NUnit.Framework.DescriptionAttribute("El pomodoro cuenta las interrupciones")]
+        public virtual void ElPomodoroCuentaLasInterrupciones()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Crear un nuevo pomodoro definiendo su duración", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("El pomodoro cuenta las interrupciones", ((string[])(null)));
 #line 11
 this.ScenarioSetup(scenarioInfo);
 #line 12
-  testRunner.When("Creo un nuevo pomodoro espedificando una duración de 30 minutos");
+ testRunner.Given("Un pomodoro iniciado");
 #line 13
-  testRunner.Then("la duración del pomodoro es de 30 minutos");
+ testRunner.When("lo interrumpo");
 #line 14
-  testRunner.And("el pomodoro está parado");
+ testRunner.And("lo interrumpo");
+#line 15
+ testRunner.Then("el número de interrupciones es 2");
 #line hidden
             this.ScenarioCleanup();
         }

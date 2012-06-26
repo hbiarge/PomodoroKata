@@ -5,6 +5,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroKata", "PomodoroKat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroKata.Tests", "PomodoroKata.Tests\PomodoroKata.Tests.csproj", "{47BE6FD7-69BA-46A9-9BB0-0BA2F3893800}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F6452299-8582-4185-BE21-9BA66C04681F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroConsole", "PomodoroConsole\PomodoroConsole.csproj", "{D0E68DC6-C76E-4700-A7F8-11B97B4C8130}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +24,10 @@ Global
 		{47BE6FD7-69BA-46A9-9BB0-0BA2F3893800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47BE6FD7-69BA-46A9-9BB0-0BA2F3893800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47BE6FD7-69BA-46A9-9BB0-0BA2F3893800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0E68DC6-C76E-4700-A7F8-11B97B4C8130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E68DC6-C76E-4700-A7F8-11B97B4C8130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E68DC6-C76E-4700-A7F8-11B97B4C8130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0E68DC6-C76E-4700-A7F8-11B97B4C8130}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E098551F-3548-4DFC-9E99-9D49C617D2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E098551F-3548-4DFC-9E99-9D49C617D2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E098551F-3548-4DFC-9E99-9D49C617D2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU

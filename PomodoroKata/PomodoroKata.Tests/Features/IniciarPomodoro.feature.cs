@@ -19,21 +19,20 @@ namespace PomodoroKata.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Crear un pomodoro")]
-    public partial class CrearUnPomodoroFeature
+    [NUnit.Framework.DescriptionAttribute("Iniciar pomodoro")]
+    public partial class IniciarPomodoroFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "CrearPomodoro.feature"
+#line 1 "IniciarPomodoro.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Crear un pomodoro", "Para poder gestionar los pomodoros\r\ncomo usuario\r\nquiero poder crear un nuevo pom" +
-                    "odoro", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Iniciar pomodoro", "Para iniciar un pomodoro\r\nComo usuario\r\nQuiero poder iniciar un pomodoro", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -66,35 +65,35 @@ namespace PomodoroKata.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Crear un nuevo pomodoro sin establecer su duración")]
-        public virtual void CrearUnNuevoPomodoroSinEstablecerSuDuracion()
+        [NUnit.Framework.DescriptionAttribute("Puedo iniciar un pomodoro parado")]
+        public virtual void PuedoIniciarUnPomodoroParado()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Crear un nuevo pomodoro sin establecer su duración", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Puedo iniciar un pomodoro parado", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
-  testRunner.When("Creo un nuevo pomodoro sin especificar su duración");
+ testRunner.Given("Un pomodoro no iniciado");
 #line 8
-  testRunner.Then("la duración del pomodoro es de 25 minutos");
+ testRunner.When("lo inicio");
 #line 9
-  testRunner.And("el pomodoro está parado");
+ testRunner.Then("el pomodoro está iniciado");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Crear un nuevo pomodoro definiendo su duración")]
-        public virtual void CrearUnNuevoPomodoroDefiniendoSuDuracion()
+        [NUnit.Framework.DescriptionAttribute("Si inicio un pomodoro iniciado no pasa nada")]
+        public virtual void SiInicioUnPomodoroIniciadoNoPasaNada()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Crear un nuevo pomodoro definiendo su duración", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Si inicio un pomodoro iniciado no pasa nada", ((string[])(null)));
 #line 11
 this.ScenarioSetup(scenarioInfo);
 #line 12
-  testRunner.When("Creo un nuevo pomodoro espedificando una duración de 30 minutos");
+ testRunner.Given("Un pomodoro iniciado");
 #line 13
-  testRunner.Then("la duración del pomodoro es de 30 minutos");
+ testRunner.When("lo inicio");
 #line 14
-  testRunner.And("el pomodoro está parado");
+ testRunner.Then("el pomodoro está iniciado");
 #line hidden
             this.ScenarioCleanup();
         }
