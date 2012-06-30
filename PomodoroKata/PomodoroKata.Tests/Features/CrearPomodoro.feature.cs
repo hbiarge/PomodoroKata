@@ -32,7 +32,7 @@ namespace PomodoroKata.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Crear un pomodoro", "Para poder gestionar los pomodoros\r\ncomo usuario\r\nquiero poder crear un nuevo pom" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("es-ES"), "Crear un pomodoro", "Para poder gestionar los pomodoros\r\ncomo usuario\r\nquiero poder crear un nuevo pom" +
                     "odoro", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -73,11 +73,13 @@ namespace PomodoroKata.Tests.Features
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
-  testRunner.When("Creo un nuevo pomodoro sin especificar su duración");
+  testRunner.When("creo un nuevo pomodoro sin especificar su duración");
 #line 8
   testRunner.Then("la duración del pomodoro es de 25 minutos");
 #line 9
   testRunner.And("el pomodoro está parado");
+#line 10
+  testRunner.And("el número de interrupciones es 0");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -87,14 +89,16 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void CrearUnNuevoPomodoroDefiniendoSuDuracion()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Crear un nuevo pomodoro definiendo su duración", ((string[])(null)));
-#line 11
-this.ScenarioSetup(scenarioInfo);
 #line 12
-  testRunner.When("Creo un nuevo pomodoro espedificando una duración de 30 minutos");
+this.ScenarioSetup(scenarioInfo);
 #line 13
-  testRunner.Then("la duración del pomodoro es de 30 minutos");
+  testRunner.When("creo un nuevo pomodoro espedificando una duración de 30 minutos");
 #line 14
+  testRunner.Then("la duración del pomodoro es de 30 minutos");
+#line 15
   testRunner.And("el pomodoro está parado");
+#line 16
+  testRunner.And("el número de interrupciones es 0");
 #line hidden
             this.ScenarioCleanup();
         }

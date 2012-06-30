@@ -32,7 +32,7 @@ namespace PomodoroKata.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Iniciar pomodoro", "Para iniciar un pomodoro\r\nComo usuario\r\nQuiero poder iniciar un pomodoro", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("es-ES"), "Iniciar pomodoro", "Para iniciar un pomodoro\r\ncomo usuario\r\nquiero poder iniciar un pomodoro", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -72,7 +72,7 @@ namespace PomodoroKata.Tests.Features
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.Given("Un pomodoro no iniciado");
+ testRunner.Given("un pomodoro no iniciado");
 #line 8
  testRunner.When("lo inicio");
 #line 9
@@ -89,7 +89,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
 this.ScenarioSetup(scenarioInfo);
 #line 12
- testRunner.Given("Un pomodoro iniciado");
+ testRunner.Given("un pomodoro iniciado");
 #line 13
  testRunner.When("lo inicio");
 #line 14

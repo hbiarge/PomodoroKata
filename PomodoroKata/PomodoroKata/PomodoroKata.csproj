@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ThreadingTimer.cs" />
+    <Compile Include="ITimer.cs" />
+    <Compile Include="TimerEventArgs.cs" />
+    <Compile Include="SystemTime.cs" />
     <Compile Include="Pomodoro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

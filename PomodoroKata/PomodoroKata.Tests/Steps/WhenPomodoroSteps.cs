@@ -9,22 +9,29 @@ namespace PomodoroKata.Tests.Steps
     [Binding]
     public class WhenPomodoroSteps
     {
-        [When(@"Creo un nuevo pomodoro sin especificar su duración")]
+        [When(@"creo un nuevo pomodoro sin especificar su duración")]
         public void WhenCreoUnNuevoPomodoroSinEspecificarSuDuracion()
         {
-            ScenarioContext.Current.Set(new Pomodoro());
+            var timer = new FakeTimer(null);
+            var pomodoro = new Pomodoro(timer);
+            ScenarioContext.Current.Set(pomodoro);
+            ScenarioContext.Current.Set(timer);
         }
 
-        [When(@"Creo un nuevo pomodoro espedificando una duración de (\d+) minutos")]
+        [When(@"creo un nuevo pomodoro espedificando una duración de (\d+) minutos")]
         public void WhenCreoUnNuevoPomodoroEspedificandounaDuracion(int minutes)
         {
-            ScenarioContext.Current.Set(new Pomodoro(TimeSpan.FromMinutes(minutes)));
+            var timer = new FakeTimer(null);
+            var pomodoro = new Pomodoro(timer, minutes);
+            ScenarioContext.Current.Set(pomodoro);
+            ScenarioContext.Current.Set(timer);
         }
 
         [When(@"lo inicio")]
         public void WhenLoInicio()
         {
             var pomodoro = ScenarioContext.Current.Get<Pomodoro>();
+            SystemTime.Now = () => new DateTime(2012, 1, 1);
             pomodoro.Start();
         }
 
@@ -33,6 +40,14 @@ namespace PomodoroKata.Tests.Steps
         {
             var pomodoro = ScenarioContext.Current.Get<Pomodoro>();
             pomodoro.Break();
+        }
+
+        [When(@"han pasado (\d+) minutos")]
+        public void CuandoHanPasado(int minutes)
+        {
+            var timer = ScenarioContext.Current.Get<FakeTimer>();
+            SystemTime.Now = () => TestConstants.GeneralStartTime.AddMinutes(minutes);
+            timer.RaiseTickEvent();
         }
     }
 }

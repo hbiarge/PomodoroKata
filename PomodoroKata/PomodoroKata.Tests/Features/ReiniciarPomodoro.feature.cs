@@ -1,0 +1,5 @@
+﻿#error Parsing error near 'Scenario: Add two numbers'
+#error Parsing error near 'Given I have entered 50 into the calculator'
+#error Parsing error near 'And I have entered 70 into the calculator'
+#error Parsing error near 'When I press add'
+#error Parsing error near 'Then the result should be 120 on the screen'

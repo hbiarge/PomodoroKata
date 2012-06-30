@@ -1,23 +1,30 @@
 namespace PomodoroKata.Tests.Steps
 {
+    using System;
+
     using TechTalk.SpecFlow;
 
     [Binding]
     public class GivenPomodoroSteps
     {
-        [Given(@"Un pomodoro no iniciado")]
+        [Given(@"un pomodoro no iniciado")]
         public void GivenUnPomodoroNoIniciado()
         {
-            var pomodoro = new Pomodoro();
+            var timer = new FakeTimer(null);
+            var pomodoro = new Pomodoro(timer);
             ScenarioContext.Current.Set(pomodoro);
+            ScenarioContext.Current.Set(timer);
         }
 
-        [Given(@"Un pomodoro iniciado")]
+        [Given(@"un pomodoro iniciado")]
         public void GivenUnPomodoroIniciado()
         {
-            var pomodoro = new Pomodoro();
+            var timer = new FakeTimer(null);
+            var pomodoro = new Pomodoro(timer);
+            SystemTime.Now = () => TestConstants.GeneralStartTime;
             pomodoro.Start();
             ScenarioContext.Current.Set(pomodoro);
+            ScenarioContext.Current.Set(timer);
         }
     }
 }

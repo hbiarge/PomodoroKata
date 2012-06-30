@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeTimer.cs" />
     <Compile Include="Features\CrearPomodoro.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,7 +67,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InterrumpirPomodoro.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PararPomodoro.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PararPomodoro.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\TestConstants.cs" />
     <Compile Include="Steps\ThenPomodoroSteps.cs" />
     <Compile Include="Steps\GivenPomodoroSteps.cs" />
     <Compile Include="Steps\WhenPomodoroSteps.cs" />
@@ -80,6 +87,10 @@
     <None Include="Features\InterrumpirPomodoro.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>InterrumpirPomodoro.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PararPomodoro.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PararPomodoro.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Features\CrearPomodoro.feature">

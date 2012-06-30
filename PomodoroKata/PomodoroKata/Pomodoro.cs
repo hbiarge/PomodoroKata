@@ -1,27 +1,24 @@
-﻿namespace PomodoroKata
-{
-    using System;
-    using System.Diagnostics;
-    using System.Threading;
+﻿using System;
+using System.Diagnostics;
 
+namespace PomodoroKata
+{
     public class Pomodoro : IDisposable
     {
-        private DateTime startTime;
-        private readonly Timer timer;
+        private readonly ITimer timer;
 
-        public Pomodoro()
+        public Pomodoro(ITimer timer, int duration = 25)
         {
-            this.Duration = TimeSpan.FromMinutes(25);
-            this.timer = new Timer(this.TimerTick, null, int.MaxValue, 1000);
+            this.Duration = TimeSpan.FromMinutes(duration);
+            this.timer = timer;
+            this.timer.Tick += this.TimerTick;
         }
 
-        public Pomodoro(TimeSpan duration)
-        {
-            this.Duration = duration;
-            this.timer = new Timer(this.TimerTick, null, int.MaxValue, 100);
-        }
+        public DateTime StartedAt { get; private set; }
 
         public bool IsRunning { get; private set; }
+        
+        public bool Finished { get; private set; }
 
         public TimeSpan Duration { get; private set; }
 
@@ -29,7 +26,7 @@
 
         public void Start()
         {
-            this.startTime = DateTime.Now;
+            this.StartedAt = SystemTime.Now();
             this.IsRunning = true;
 
             this.timer.Change(0, 100);
@@ -43,10 +40,25 @@
             }
         }
 
-        private void TimerTick(object state)
+        public void Dispose()
         {
-            var timeElapsed = DateTime.Now.Subtract(this.startTime);
-            Debug.WriteLine(timeElapsed);
+            this.timer.Tick -= this.TimerTick;
+            var disposable = this.timer as IDisposable;
+
+            if (disposable != null)
+            {
+                disposable.Dispose();
+            }
+        }
+
+        private void TimerTick(object sender, TimerEventArgs e)
+        {
+            if (this.IsRunning == false)
+            {
+                return;
+            }
+
+            var timeElapsed = SystemTime.Now().Subtract(this.StartedAt);
 
             if (timeElapsed <= this.Duration)
             {
@@ -55,15 +67,8 @@
 
             this.timer.Change(int.MaxValue, 100);
             this.IsRunning = false;
-            this.startTime = DateTime.MinValue;
-        }
-
-        public void Dispose()
-        {
-            if (this.timer != null)
-            {
-                this.timer.Dispose();
-            }
+            this.Finished = true;
+            this.StartedAt = DateTime.MinValue;
         }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PomodoroConsole
 {
@@ -12,7 +8,8 @@ namespace PomodoroConsole
     {
         static void Main(string[] args)
         {
-            var pomodoro = new Pomodoro(TimeSpan.FromSeconds(30));
+            var timer = new ThreadingTimer(null, 0, 100);
+            var pomodoro = new Pomodoro(timer, TimeSpan.FromSeconds(30));
             pomodoro.Start();
 
             Console.ReadLine();

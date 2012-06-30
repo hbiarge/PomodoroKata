@@ -1,14 +1,14 @@
-﻿Feature: Iniciar pomodoro
+﻿Característica: Iniciar pomodoro
 	Para iniciar un pomodoro
-	Como usuario
-	Quiero poder iniciar un pomodoro
+	como usuario
+	quiero poder iniciar un pomodoro
 
-Scenario: Puedo iniciar un pomodoro parado
-	Given Un pomodoro no iniciado
-	When lo inicio
-	Then el pomodoro está iniciado
+Escenario: Puedo iniciar un pomodoro parado
+	Dado un pomodoro no iniciado
+	Cuando lo inicio
+	Entonces el pomodoro está iniciado
 
-Scenario: Si inicio un pomodoro iniciado no pasa nada
-	Given Un pomodoro iniciado
-	When lo inicio
-	Then el pomodoro está iniciado
+Escenario: Si inicio un pomodoro iniciado no pasa nada
+	Dado un pomodoro iniciado
+	Cuando lo inicio
+	Entonces el pomodoro está iniciado

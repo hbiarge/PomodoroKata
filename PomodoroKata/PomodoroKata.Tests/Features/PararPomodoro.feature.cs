@@ -19,21 +19,21 @@ namespace PomodoroKata.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Interrumpir pomodoro")]
-    public partial class InterrumpirPomodoroFeature
+    [NUnit.Framework.DescriptionAttribute("Parar un pomodoro")]
+    public partial class PararUnPomodoroFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "InterrumpirPomodoro.feature"
+#line 1 "PararPomodoro.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("es-ES"), "Interrumpir pomodoro", "Para gestionar las interrupciones durante un pomodoro\r\ncomo usuario\r\nquiero poder" +
-                    " interrumpir un pomodoro", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("es-ES"), "Parar un pomodoro", "Para la gestión correcta del tiempo\r\ncomo usuario\r\nquiero que el pomodoro se pare" +
+                    " cuando termina el tiempo del pomodoro", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -66,35 +66,54 @@ namespace PomodoroKata.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("No se puede interrumpir un pomodoro no iniciado")]
-        public virtual void NoSePuedeInterrumpirUnPomodoroNoIniciado()
+        [NUnit.Framework.DescriptionAttribute("Un pomodoro no termina si no ha sido arrancado previamente")]
+        public virtual void UnPomodoroNoTerminaSiNoHaSidoArrancadoPreviamente()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No se puede interrumpir un pomodoro no iniciado", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Un pomodoro no termina si no ha sido arrancado previamente", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given("un pomodoro no iniciado");
 #line 8
- testRunner.When("lo interrumpo");
+ testRunner.When("han pasado 26 minutos");
 #line 9
- testRunner.Then("el número de interrupciones es 0");
+ testRunner.Then("el pomodoro no ha terminado");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("El pomodoro cuenta las interrupciones")]
-        public virtual void ElPomodoroCuentaLasInterrupciones()
+        [NUnit.Framework.DescriptionAttribute("Un pomodoro termina cuando se agota su tiempo")]
+        public virtual void UnPomodoroTerminaCuandoSeAgotaSuTiempo()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("El pomodoro cuenta las interrupciones", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Un pomodoro termina cuando se agota su tiempo", ((string[])(null)));
 #line 11
 this.ScenarioSetup(scenarioInfo);
 #line 12
  testRunner.Given("un pomodoro iniciado");
 #line 13
- testRunner.When("lo interrumpo");
+ testRunner.When("han pasado 26 minutos");
 #line 14
- testRunner.Then("el número de interrupciones es 1");
+ testRunner.Then("el pomodoro ha terminado");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Un pomodoro no termina mientras no se agote su tiempo")]
+        public virtual void UnPomodoroNoTerminaMientrasNoSeAgoteSuTiempo()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Un pomodoro no termina mientras no se agote su tiempo", ((string[])(null)));
+#line 16
+this.ScenarioSetup(scenarioInfo);
+#line 17
+ testRunner.Given("un pomodoro iniciado");
+#line 18
+ testRunner.When("han pasado 10 minutos");
+#line 19
+ testRunner.Then("el pomodoro no ha terminado");
+#line 20
+ testRunner.And("el pomodoro está iniciado");
 #line hidden
             this.ScenarioCleanup();
         }

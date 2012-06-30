@@ -14,13 +14,27 @@
         {
             var pomodoro = ScenarioContext.Current.Get<Pomodoro>();
             pomodoro.IsRunning.Should().Be(false);
-        }
+            }
 
         [Then(@"el pomodoro está iniciado")]
         public void ThenElPomodoroEstaIniciado()
         {
             var pomodoro = ScenarioContext.Current.Get<Pomodoro>();
             pomodoro.IsRunning.Should().Be(true);
+            }
+
+        [Then(@"el pomodoro ha terminado")]
+        public void EntoncesElPomodoroHaTerminado()
+        {
+            var pomodoro = ScenarioContext.Current.Get<Pomodoro>();
+            pomodoro.Finished.Should().Be(true);
+        }
+
+        [Then(@"el pomodoro no ha terminado")]
+        public void EntoncesElPomodoroNoHaTerminado()
+        {
+            var pomodoro = ScenarioContext.Current.Get<Pomodoro>();
+            pomodoro.Finished.Should().Be(false);
         }
 
         [Then(@"la duración del pomodoro es de (\d+) minutos")]
